@@ -1,5 +1,6 @@
 import java.time.Duration;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        System.setProperty("webdriver.chrome.driver", "C:\\testing\\exp101\\src\\driver\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\devam\\OneDrive\\Desktop\\Testing\\Practice\\exp8\\exp8\\src\\driver\\chromedriver.exe");
         WebDriver driver= new ChromeDriver();
         driver.get("http://www.flipkart.com");
         driver.manage().window().maximize();
@@ -16,12 +17,13 @@ public class App {
         try {
             WebElement searchbox = driver.findElement(By.name("q"));
             searchbox.sendKeys("Headphones");
-            WebElement searchButton = driver.findElement(By.xpath("//button[@type='submit']"));
-            searchButton.click();     
+           // WebElement searchButton = driver.findElement(By.xpath("//*[@id=\"container\"]/div/div[1]/div/div/div/div/div[1]/div/div[1]/div/div[1]/div[1]/header/div[1]/div[2]/form/div/button/svg"));
+            //
+            searchbox.sendKeys(Keys.ENTER);    
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-            WebElement item = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"container\"]/div/div[3]/div[1]/div[2]/div[2]/div/div[1]/div/a[1]/div[1]/div/div")));
-            item.click();
-            System.out.println("Added first element successfully");
+           // WebElement item = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"container\"]/div/div[3]/div[1]/div[2]/div[2]/div/div[1]/div/a[1]/div[1]/div/div")));
+            //item.click();
+            //System.out.println("Added first element successfully");
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         } finally {
@@ -35,8 +37,7 @@ public class App {
             WebElement searchButton = driver.findElement(By.xpath("//button[@type='submit']"));
             searchButton.click();     
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-            WebElement item = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"container\"]/div/div[3]/div[1]/div[2]/div[2]/div/div[1]/div/a[1]/div[1]/div/div")));
-            item.click();
+           
            // System.out.println("failed");
         } catch (Exception e) {
             System.out.println("Error: "+e.getMessage());
